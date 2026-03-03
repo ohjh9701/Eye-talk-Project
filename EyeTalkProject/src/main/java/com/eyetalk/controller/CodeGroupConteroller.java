@@ -34,10 +34,51 @@ public class CodeGroupConteroller {
 		int count = service.register(codeGroup);
 		log.info("codeGroup/register = " + count);
 		if (count != 0) {
-			rttr.addFlashAttribute("msg", "SUCCESS");
+			rttr.addFlashAttribute("msg", "코드그룹 등록이 완료되었습니다.");
 			return "redirect:/codegroup/list";
 		}
 		return "redirect:/codegroup/register";
 	}
+	
+	@GetMapping("/list")
+	public void list(Model model) throws Exception {
+		model.addAttribute("list",service.list());
+	}
+	
+	// 코드그룹 상세페이지 요청
+	@GetMapping("/detail")
+	public void read(CodeGroup codeGroup, Model model) throws Exception {
+		model.addAttribute(service.read(codeGroup));
+	}
+	
+	// 수정 페이지
+		@GetMapping("/modify")
+		public void modifyForm(CodeGroup codeGroup, Model model) throws Exception {
+			model.addAttribute(service.read(codeGroup));
+		}
+		
+		// 코드그룹 수정 등록 페이지
+		@PostMapping("/modify")
+		public String modify(CodeGroup codeGroup, RedirectAttributes rttr) throws Exception {
+			int count = service.update(codeGroup);
+			if (count != 0) {
+				rttr.addFlashAttribute("msg", "코드그룹 수정이 완료되었습니다.");
+			} else {
+				rttr.addFlashAttribute("msg", "코드그룹 수정에 실패하였습니다.");
+			}
+			return "redirect:/codegroup/list";
+		}
+		
+		// 코드그룹 삭제 처리요청
+		@GetMapping("/remove")
+		public String remove(CodeGroup codeGroup, RedirectAttributes rttr) throws Exception {
+			int count = service.remove(codeGroup);
+			if (count != 0) {
+				rttr.addFlashAttribute("msg", "코드그룹 삭제가 완료되었습니다.");
+			} else {
+				rttr.addFlashAttribute("msg", "코드그룹 삭제에 실패하였습니다.");
+			}
+			return "redirect:/codegroup/list";
+		}
 	
 }

@@ -15,29 +15,29 @@
 	<jsp:include page="/WEB-INF/views/common/menu.jsp" />
 	<div class="container">
 		<h2>
-			<spring:message code="codegroup.header.register" />
+			코드그룹 등록
 		</h2>
 
 
-		<form:form modelAttribute="codeGroup" action="/register" method="get">
+		<form:form modelAttribute="codeGroup" action="register" method="post">
 			<div class="form-group">
-				<label for="groupCode"><spring:message code="codegroup.groupCode" /></label>
+				<label for="groupCode">그룹코드</label>
 				<form:input path="groupCode" placeholder="그룹 코드를 입력하세요" />
 				<font color="red"><form:errors path="groupCode"/></font>
 			</div>
 
 			<div class="form-group">
-				<label for="groupName"><spring:message code="codegroup.groupName" /></label>
+				<label for="groupName">그룹명</label>
 				<form:input path="groupName" placeholder="그룹 명칭을 입력하세요" />
 				<font color="red"><form:errors path="groupName"/></font>
 			</div>
 
 			<div>
 				<button type="submit" id="btnRegister">
-					<spring:message code="action.register" />
+					등록하기
 				</button>
 				<button type="submit" id="btnList">
-					<spring:message code="action.list" />
+					목록보기
 				</button>
 			</div>
 
@@ -50,6 +50,7 @@
 		$(document).ready(function() {
 			let formObj = $("#codeGroup");
 			$("#btnRegister").on("click", function() {
+				alert("등록이 완료되었습니다.");
 				formObj.submit();
 			});
 			$("#btnList").on("click", function() {
