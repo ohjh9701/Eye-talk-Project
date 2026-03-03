@@ -9,6 +9,7 @@
         <tr>
             <td width="20%"><a href="/">EYE-TALK</a></td>
             <td width="20%"><a href="/codegroup/list">코드그룹</a></td>
+            <td width="20%"><a href="/codedetail/list">상세코드</a></td>
             <td width="20%"><a href="/user/register">회원가입</a></td>
             <td width="20%"><a href="/auth/login">로그인</a></td>
         </tr>
